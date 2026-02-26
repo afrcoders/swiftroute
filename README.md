@@ -56,7 +56,7 @@ SwiftRoute is a full-featured delivery booking platform built with Laravel. It e
 
 ```bash
 # Clone the repository
-git clone https://github.com/dhtml/swiftroute.git
+git clone https://github.com/afrcoders/swiftroute.git
 cd swiftroute
 
 # Start with Make (recommended)
