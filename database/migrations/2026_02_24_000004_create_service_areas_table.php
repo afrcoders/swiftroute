@@ -1,0 +1,30 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    public function up(): void
+    {
+        Schema::create('service_areas', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');                     // 'Winnipeg'
+            $table->string('city');
+            $table->string('province', 2);              // 'MB'
+            $table->string('country', 2)->default('CA');
+            $table->json('postal_prefixes');             // ["R2", "R3", "R4"] — valid Winnipeg postal prefixes
+            $table->decimal('lat_center', 10, 7)->nullable();
+            $table->decimal('lng_center', 10, 7)->nullable();
+            $table->decimal('radius_km', 8, 2)->nullable();  // boundary radius
+            $table->boolean('is_active')->default(true);
+            $table->timestamps();
+        });
+    }
+
+    public function down(): void
+    {
+        Schema::dropIfExists('service_areas');
+    }
+};

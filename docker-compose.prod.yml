@@ -1,0 +1,41 @@
+version: '3.8'
+
+# Production overrides
+# Usage: docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d
+
+services:
+  app:
+    restart: always
+    environment:
+      APP_ENV: production
+      APP_DEBUG: "false"
+    volumes:
+      - .:/var/www/html:ro
+      - app_storage:/var/www/html/storage
+
+  nginx:
+    restart: always
+
+  mysql:
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+
+  redis:
+    restart: always
+    command: redis-server --appendonly yes --requirepass ${REDIS_PASSWORD:-}
+
+  queue:
+    restart: always
+    command: php artisan queue:work redis --sleep=3 --tries=3 --max-time=3600 --memory=256
+
+  scheduler:
+    restart: always
+
+  # Remove mailpit in production
+  mailpit:
+    profiles:
+      - dev
+
+volumes:
+  app_storage:

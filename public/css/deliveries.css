@@ -1,0 +1,666 @@
+/* ============================================================
+   TERRA NOVA — DELIVERIES STYLESHEET
+   Modern, mobile-first design system for booking flow
+   ============================================================ */
+
+:root {
+    --tn-primary: #1a1a2e;
+    --tn-accent: #2c5aa0;
+    --tn-accent-light: #e8f0fe;
+    --tn-success: #16a34a;
+    --tn-danger: #dc2626;
+    --tn-text: #1e293b;
+    --tn-text-muted: #64748b;
+    --tn-border: #e2e8f0;
+    --tn-bg: #f8fafc;
+    --tn-card-bg: #ffffff;
+    --tn-radius: 12px;
+    --tn-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+    --tn-shadow-lg: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+* { box-sizing: border-box; }
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--tn-bg);
+    color: var(--tn-text);
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ── Navbar ──────────────────────────────────────────────── */
+
+.tn-navbar {
+    background: var(--tn-primary) !important;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    padding: 0.6rem 0;
+    z-index: 1050;
+}
+
+.tn-logo {
+    height: 40px;
+    width: auto;
+}
+
+.tn-brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+
+.tn-brand-name {
+    color: #fff;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.tn-brand-sub {
+    color: rgba(255,255,255,0.5);
+    font-size: 0.7rem;
+}
+
+/* ── Progress Bar ────────────────────────────────────────── */
+
+.tn-progress-bar {
+    background: var(--tn-card-bg);
+    border-bottom: 1px solid var(--tn-border);
+    padding: 1rem 0;
+    margin-top: 62px;
+    position: sticky;
+    top: 62px;
+    z-index: 100;
+}
+
+.tn-steps {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    position: relative;
+}
+
+.tn-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    flex: 1;
+    max-width: 160px;
+    position: relative;
+}
+
+.tn-step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 16px;
+    left: 50%;
+    width: 100%;
+    height: 2px;
+    background: var(--tn-border);
+    z-index: 0;
+}
+
+.tn-step.completed:not(:last-child)::after {
+    background: var(--tn-accent);
+}
+
+.tn-step-circle {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    font-weight: 600;
+    background: var(--tn-border);
+    color: var(--tn-text-muted);
+    position: relative;
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+.tn-step.active .tn-step-circle {
+    background: var(--tn-accent);
+    color: #fff;
+    box-shadow: 0 0 0 4px var(--tn-accent-light);
+}
+
+.tn-step.completed .tn-step-circle {
+    background: var(--tn-success);
+    color: #fff;
+}
+
+.tn-step-label {
+    font-size: 0.7rem;
+    color: var(--tn-text-muted);
+    text-align: center;
+    font-weight: 500;
+}
+
+.tn-step.active .tn-step-label {
+    color: var(--tn-accent);
+    font-weight: 600;
+}
+
+.tn-step.completed .tn-step-label {
+    color: var(--tn-success);
+}
+
+/* ── Main Content ────────────────────────────────────────── */
+
+.tn-main {
+    padding-top: 2rem;
+    padding-bottom: 4rem;
+    min-height: calc(100vh - 200px);
+}
+
+/* ── Card ────────────────────────────────────────────────── */
+
+.tn-card {
+    background: var(--tn-card-bg);
+    border-radius: var(--tn-radius);
+    box-shadow: var(--tn-shadow);
+    border: 1px solid var(--tn-border);
+    padding: 2rem;
+    max-width: 640px;
+    margin: 0 auto;
+}
+
+.tn-card-header {
+    margin-bottom: 1.5rem;
+}
+
+.tn-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--tn-text);
+    margin: 0 0 0.4rem;
+}
+
+.tn-subtitle {
+    color: var(--tn-text-muted);
+    font-size: 0.95rem;
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* ── Features List ───────────────────────────────────────── */
+
+.tn-features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem;
+    margin-bottom: 1.5rem;
+}
+
+.tn-feature {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--tn-text-muted);
+    padding: 0.5rem 0.75rem;
+    background: var(--tn-bg);
+    border-radius: 8px;
+}
+
+.tn-feature i {
+    color: var(--tn-accent);
+    font-size: 1rem;
+}
+
+/* ── Form Elements ───────────────────────────────────────── */
+
+.tn-label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--tn-text);
+    margin-bottom: 0.4rem;
+}
+
+.tn-input {
+    border: 1.5px solid var(--tn-border);
+    border-radius: 8px;
+    padding: 0.6rem 0.85rem;
+    font-size: 0.9rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    background: var(--tn-card-bg);
+}
+
+.tn-input:focus {
+    border-color: var(--tn-accent);
+    box-shadow: 0 0 0 3px rgba(44, 90, 160, 0.1);
+    outline: none;
+}
+
+.tn-error {
+    color: var(--tn-danger);
+    font-size: 0.8rem;
+    margin-top: 0.3rem;
+}
+
+.tn-divider {
+    border: none;
+    border-top: 1px solid var(--tn-border);
+    margin: 1.5rem 0;
+}
+
+/* ── Vehicle Grid ────────────────────────────────────────── */
+
+.tn-vehicle-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 0.75rem;
+}
+
+.tn-vehicle-option input {
+    display: none;
+}
+
+.tn-vehicle-card {
+    border: 2px solid var(--tn-border);
+    border-radius: var(--tn-radius);
+    padding: 1.2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.tn-vehicle-card:hover {
+    border-color: var(--tn-accent);
+    background: var(--tn-accent-light);
+}
+
+.tn-vehicle-option input:checked + .tn-vehicle-card {
+    border-color: var(--tn-accent);
+    background: var(--tn-accent-light);
+    box-shadow: 0 0 0 3px rgba(44, 90, 160, 0.15);
+}
+
+.tn-vehicle-card img {
+    width: 80px;
+    height: 60px;
+    object-fit: contain;
+}
+
+.tn-vehicle-name {
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* ── Location Groups ─────────────────────────────────────── */
+
+.tn-location-group {
+    margin-bottom: 0.5rem;
+}
+
+.tn-add-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: none;
+    border: 1px dashed var(--tn-border);
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    color: var(--tn-accent);
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.2s;
+    margin-top: 0.4rem;
+}
+
+.tn-add-btn:hover {
+    background: var(--tn-accent-light);
+    border-color: var(--tn-accent);
+}
+
+/* ── Loading Options ─────────────────────────────────────── */
+
+.tn-loading-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.tn-loading-option input {
+    display: none;
+}
+
+.tn-loading-card {
+    border: 2px solid var(--tn-border);
+    border-radius: var(--tn-radius);
+    padding: 1rem 1.25rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.tn-loading-card:hover {
+    border-color: var(--tn-accent);
+}
+
+.tn-loading-option input:checked + .tn-loading-card {
+    border-color: var(--tn-accent);
+    background: var(--tn-accent-light);
+    box-shadow: 0 0 0 3px rgba(44, 90, 160, 0.15);
+}
+
+.tn-loading-content {
+    flex: 1;
+}
+
+.tn-loading-fee {
+    white-space: nowrap;
+}
+
+/* ── Items ───────────────────────────────────────────────── */
+
+.tn-item-row {
+    margin-bottom: 0.5rem;
+}
+
+/* ── Price Display ───────────────────────────────────────── */
+
+.tn-price-display {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+}
+
+.tn-price-label {
+    font-size: 0.9rem;
+    color: var(--tn-text-muted);
+}
+
+.tn-price-amount {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--tn-text);
+}
+
+.tn-total-bar {
+    background: var(--tn-bg);
+    border: 1px solid var(--tn-border);
+    border-radius: var(--tn-radius);
+    padding: 1rem 1.25rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+}
+
+.tn-total-amount {
+    font-size: 1.3rem;
+    color: var(--tn-accent);
+}
+
+/* ── Summary ─────────────────────────────────────────────── */
+
+.tn-summary {
+    background: var(--tn-bg);
+    border: 1px solid var(--tn-border);
+    border-radius: var(--tn-radius);
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.tn-summary-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+}
+
+.tn-edit-link {
+    font-size: 0.8rem;
+    color: var(--tn-accent);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.tn-edit-link:hover {
+    text-decoration: underline;
+}
+
+.tn-summary-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+}
+
+.tn-summary-total-amount {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--tn-accent);
+}
+
+.tn-summary-row {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.3rem 0;
+    font-size: 0.88rem;
+}
+
+.tn-summary-row strong {
+    min-width: 120px;
+    flex-shrink: 0;
+    color: var(--tn-text);
+}
+
+.tn-summary-row span {
+    color: var(--tn-text-muted);
+}
+
+/* ── Price Breakdown ─────────────────────────────────────── */
+
+.tn-price-breakdown {
+    margin-top: 1rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--tn-border);
+}
+
+.tn-breakdown-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.25rem 0;
+    font-size: 0.85rem;
+    color: var(--tn-text-muted);
+}
+
+.tn-breakdown-total {
+    border-top: 2px solid var(--tn-text);
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    font-size: 1rem;
+    color: var(--tn-text);
+}
+
+/* ── Items List ──────────────────────────────────────────── */
+
+.tn-items-list {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0 0;
+}
+
+.tn-items-list li {
+    padding: 0.3rem 0;
+    font-size: 0.88rem;
+    color: var(--tn-text-muted);
+}
+
+.tn-items-list li::before {
+    content: '•';
+    color: var(--tn-accent);
+    margin-right: 0.5rem;
+    font-weight: bold;
+}
+
+/* ── Confirmation ────────────────────────────────────────── */
+
+.tn-confirmation-icon {
+    font-size: 4rem;
+    color: var(--tn-success);
+}
+
+.tn-booking-ref {
+    background: var(--tn-accent-light);
+    border: 1px solid #d0e3ff;
+    border-radius: var(--tn-radius);
+    padding: 1rem;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    margin-top: 1.5rem;
+}
+
+.tn-ref-label {
+    font-size: 0.75rem;
+    color: var(--tn-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.tn-ref-code {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--tn-accent);
+    letter-spacing: 1px;
+}
+
+/* ── Buttons ─────────────────────────────────────────────── */
+
+.tn-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+    line-height: 1.4;
+}
+
+.tn-btn-primary {
+    background: var(--tn-accent);
+    color: #fff;
+}
+
+.tn-btn-primary:hover {
+    background: #234d8c;
+    color: #fff;
+}
+
+.tn-btn-primary:disabled {
+    background: #94a3b8;
+    cursor: not-allowed;
+}
+
+.tn-btn-outline {
+    background: transparent;
+    color: var(--tn-text);
+    border: 1.5px solid var(--tn-border);
+}
+
+.tn-btn-outline:hover {
+    background: var(--tn-bg);
+    border-color: var(--tn-text-muted);
+    color: var(--tn-text);
+}
+
+/* ── Footer ──────────────────────────────────────────────── */
+
+.tn-footer {
+    background: var(--tn-primary);
+    color: rgba(255,255,255,0.5);
+    padding: 1.5rem 0;
+    font-size: 0.8rem;
+}
+
+.tn-footer a {
+    color: rgba(255,255,255,0.7);
+}
+
+.tn-footer a:hover {
+    color: #fff;
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+    .tn-card {
+        padding: 1.25rem;
+        border-radius: 0;
+        box-shadow: none;
+        border-left: none;
+        border-right: none;
+    }
+
+    .tn-title {
+        font-size: 1.25rem;
+    }
+
+    .tn-features {
+        grid-template-columns: 1fr;
+    }
+
+    .tn-step-label {
+        display: none;
+    }
+
+    .tn-steps {
+        gap: 0;
+    }
+
+    .tn-price-amount {
+        font-size: 1.8rem;
+    }
+
+    .tn-progress-bar {
+        margin-top: 56px;
+        top: 56px;
+    }
+
+    .tn-summary-row {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .tn-summary-row strong {
+        min-width: auto;
+    }
+
+    .tn-loading-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 480px) {
+    .tn-brand-sub {
+        display: none;
+    }
+
+    .tn-vehicle-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
